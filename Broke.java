@@ -10,6 +10,7 @@ import toolbox.terminal.InputReader;
 import toolbox.terminal.InputParser;
 import toolbox.textfile.TextFileHandler;
 import toolbox.regex.Regex;
+import toolbox.file.SearchFolder;
 
 /**
  * O objetivo desta aplicação é tentar quebrar as linhas de um arquivo HTML que
@@ -35,6 +36,11 @@ public final class Broke {
     
     //Se inclui ou nao subdiretorios ao pesquisar
     private static boolean searchSubdirs;
+    
+    //Prefixo de extensao que sera usado para gerar nomes
+    //dos arquivos de saida, diferenciando-os dos nomes dos
+    //arquivos de entrada.
+    private static final String EXT_PREFIX = "broke-";
     
     /*-------------------------------------------------------------------------
               Obtem o ponto possivel de quebra de linha mais proximo que
@@ -117,10 +123,16 @@ public final class Broke {
         
         final Map<String, Integer> overflowsMap = new HashMap<>(256);
     
-        final String[] tags = {"pre", "style", "script"};        
+        final String[] tags = {"pre", "style", "script"}; 
+        
+        SearchFolder searchFolder = new SearchFolder(searchDir);
 
-        String[] filenames = Commons.searchForHtmlFiles(searchDir, searchSubdirs);
-     
+        String[] filenames = 
+            searchFolder.getPathnamesList(
+                "(.(?!(\\." + EXT_PREFIX + "\\d{2}\\d*)))+?\\.(HTML?|html?)",
+                searchSubdirs
+            );
+        
         ProgressBar progressBar = new ProgressBar(filenames.length, 60);
         
         progressBar.showBar();
@@ -132,12 +144,7 @@ public final class Broke {
             e, opcionalmente, nos subdiretorios deste 
             */
             for (String filename: filenames) {
-                
-                if (filename.matches(".+?\\.broke-\\d{2}\\d*\\.(HTML?|html?)")) {
-                    progressBar.increment();
-                    continue;
-                }
-                
+
                 int brokenLines = 0;
                 
                 TextFileHandler textFileHandler = 
@@ -226,7 +233,7 @@ public final class Broke {
                     //Recebe o conteudo do arquivo com as linhas quebradas
                     textFileHandler.setContent(content);
                     
-                    String prefix = "broke-" + maxLength;                    
+                    String prefix = EXT_PREFIX + maxLength;                    
 
                     textFileHandler.writeWithExtPrefix(prefix);                    
                     
