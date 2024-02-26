@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Remove
+comment0.text=\n\ Uma\ aplica\u00E7ao\ para\ remover\ tags\ divs\ (e\ seus\ escopos)\ que\ contenham\ o\n\ atributo\ aria-label\="Lista\ de\ conversas".\n\ \n\ @author\ Pedro\ Reis\n\ @version\ 1.0\ 25\ de\ fevereiro\ de\ 2024\n
+comment1.params=charset
+comment1.target=void\ readInputs(java.lang.String)
+comment1.text=-------------------------------------------------------------------------\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Le\ as\ entradas\ de\ usuario\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \n--------------------------------------------------------------------------
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+comment2.text=\n\ Metodo\ principal.\n\ \n\ @param\ args\ O\ charset\ a\ ser\ usado\ para\ ler\ e\ escrever\ no\ \n\ terminal\ pode\ ser\ passado\ ao\ programa\ pela\ linha\ de\ comando.\ Se\ nenhum\ \n\ parametro\ for\ passado\ sera\ assumido\ que\ o\ charset\ do\ terminal\ e\ o\ mesmo\n\ do\ sistema.\n\ \n\ @throws\ IOException\ Em\ caso\ de\ erro\ de\ IO.\n
+numComments=3

@@ -1,5 +1,7 @@
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.IllegalCharsetNameException;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.LinkedList;
@@ -21,6 +23,8 @@ public class Remove{
     private static String searchDir;
     
     private static boolean searchSubdirs;
+    
+    private static String htmlCharset;
     
     /*-------------------------------------------------------------------------
                              Le as entradas de usuario                          
@@ -47,10 +51,31 @@ public class Remove{
             false
         );
         
-        searchSubdirs = inputReader.readInput().equals("s");         
+        searchSubdirs = inputReader.readInput().equals("s");
+        
+        //Define charset para ler e gravar os arquivos--------------------------
+               
+        inputReader.setPrompt(
+            "Charset dos arquivos HTML",
+            "UTF-8",
+            "utf8",
+            new ParseCharset()
+        );
+        
+        htmlCharset = inputReader.readInput();
         
     }//readInputs
     
+    /**
+     * Metodo principal.
+     * 
+     * @param args O charset a ser usado para ler e escrever no 
+     * terminal pode ser passado ao programa pela linha de comando. Se nenhum 
+     * parametro for passado sera assumido que o charset do terminal e o mesmo
+     * do sistema.
+     * 
+     * @throws IOException Em caso de erro de IO.
+     */
     public static void main(String[] args) throws IOException {
         
         readInputs(Commons.parseCharset(args));
@@ -67,7 +92,7 @@ public class Remove{
         
         for (String filename: filenames) {
            
-            TextFileHandler textFileHandler = new TextFileHandler(filename, "utf8");
+            TextFileHandler textFileHandler = new TextFileHandler(filename, htmlCharset);
             
             textFileHandler.read();
             
@@ -75,25 +100,24 @@ public class Remove{
             
             StringBuilder sb = new StringBuilder(content);
             
-            Matcher matcher = divPattern.matcher(sb);
+            Matcher divMatcher = divPattern.matcher(sb);
             
-            int scopesLevel = 0;
+            int divLevel = 0;
             
-            int[] indexes = null;
-            
+            int divStart = -1;
+             
             listOfIndexes = new LinkedList<>();
             
-            while (matcher.find()) {
+            while (divMatcher.find()) {
                 
-                String divTag = matcher.group();
+                String divTag = divMatcher.group();
                
-                if (scopesLevel == 0) {
+                if (divLevel == 0) {
                     
                     if (divTag.contains("aria-label=\"Lista de conversas\"")) {
                         
-                        scopesLevel++;
-                        indexes = new int[2];
-                        indexes[0] = matcher.start();
+                        divLevel++;
+                        divStart = divMatcher.start();
                            
                     }
                     
@@ -102,16 +126,18 @@ public class Remove{
                     
                     if (divTag.charAt(1) == '/') {
                         
-                        scopesLevel--;
+                        divLevel--;
                         
-                        if (scopesLevel == 0) {
-                            
-                            indexes[1] = matcher.start() + divTag.length();
-                            listOfIndexes.add(indexes);
+                        if (divLevel == 0) {
+ 
+                            int[] divBoundary = new int[2];
+                            divBoundary[0] = divStart;
+                            divBoundary[1] = divMatcher.start() + divTag.length();
+                            listOfIndexes.add(divBoundary);
                            
                         }
                     }
-                    else scopesLevel++;
+                    else divLevel++;
                     
                 }//if-else
                 
@@ -131,5 +157,30 @@ public class Remove{
         }//for
         
     }//main
+    
+    /*=======================================================
+     *                  Classe privada
+     ======================================================*/
+    private static class ParseCharset extends InputParser {
+        
+        @Override
+        public String parse(final String input) 
+            throws IllegalArgumentException {
+
+            try {
+                
+                if (Charset.isSupported(input)) 
+                    return input; 
+                else 
+                    throw new IllegalArgumentException("Charset inexistente!");
+            }
+            catch (IllegalCharsetNameException e) {
+                
+                throw new IllegalArgumentException("Charset ilegal!");
+            }
+            
+        }//parse
+        
+    }//classe privada ParseCharset
   
 }//classe Remove

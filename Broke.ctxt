@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Broke
+comment0.text=\n\ O\ objetivo\ desta\ aplica\u00E7\u00E3o\ \u00E9\ tentar\ quebrar\ as\ linhas\ de\ um\ arquivo\ HTML\ que\n\ ultrapassem\ (em\ n\u00FAmero\ de\ caracteres)\ um\ determinado\ valor\ especificado.\ At\u00E9\n\ que\ restem\ apenas\ linhas\ no\ arquivo\ com\ n\u00FAmero\ menor\ de\ caracteres\ que\ este\n\ valor\ \ especificado.\n\ \n\ <p>\u00C9\ uma\ aplica\u00E7\u00E3o\ de\ "melhor\ esfor\u00E7o",\ j\u00E1\ que\ linhas\ de\ um\ documento\ HTML\n\ nem\ sempre\ podem\ ser\ quebradas\ em\ qualquer\ ponto\ sem\ alterar\ a\ pr\u00F3pria\ \n\ apresenta\u00E7\u00E3o\ do\ documento\ no\ navegador.</p>\n\ \n\ \n\ @version\ 1.0\n\ @author\ Pedro\ Reis\n
+comment1.params=test
+comment1.target=int\ getMaxBreakPoint(java.lang.String)
+comment1.text=-------------------------------------------------------------------------\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ Obtem\ o\ ponto\ possivel\ de\ quebra\ de\ linha\ mais\ proximo\ que\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ puder\ do\ final\ da\ string\n--------------------------------------------------------------------------
+comment2.params=test
+comment2.target=int\ getMinBreakPoint(java.lang.String)
+comment2.text=-------------------------------------------------------------------------\n\ \ \ \ \ \ \ \ \ \ \ \ \ Obtem\ o\ ponto\ possivel\ de\ quebra\ de\ linha\ mais\ proximo\ que\n\ \ \ \ \ \ \ \ \ \ \ \ \ puder\ do\ inicio\ da\ String\n--------------------------------------------------------------------------
+comment3.params=charset
+comment3.target=void\ readInputs(java.lang.String)
+comment3.text=-------------------------------------------------------------------------\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Le\ as\ entradas\ de\ usuario\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \n--------------------------------------------------------------------------
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+comment4.text=-------------------------------------------------------------------------\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \n--------------------------------------------------------------------------
+numComments=5

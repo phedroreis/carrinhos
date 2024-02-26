@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=TestClipboard
+comment1.params=args
+comment1.target=void\ main(java.lang.String[])
+comment2.params=html\ plainText
+comment2.target=TestClipboard(java.lang.String,\ java.lang.String)
+comment3.params=
+comment3.target=java.awt.datatransfer.DataFlavor[]\ getTransferDataFlavors()
+comment4.params=flavor
+comment4.target=boolean\ isDataFlavorSupported(java.awt.datatransfer.DataFlavor)
+comment5.params=flavor
+comment5.target=java.lang.Object\ getTransferData(java.awt.datatransfer.DataFlavor)
+numComments=6

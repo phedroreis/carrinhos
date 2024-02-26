@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=CountChars
+comment0.text=\n\ Mostra\ quantos\ caracteres\ tem\ em\ cada\ linha\ de\ um\ arquivo\ HTML.\n\ \ \n\ @version\ 1.0\n\ @author\ Pedro\ Reis\n
+comment1.params=charset
+comment1.target=void\ readInputs(java.lang.String)
+comment1.text=-------------------------------------------------------------------------\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Le\ as\ entradas\ de\ usuario\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \n--------------------------------------------------------------------------
+comment2.params=args
+comment2.target=void\ main(java.lang.String[])
+comment2.text=-------------------------------------------------------------------------\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Metodo\ principal\n--------------------------------------------------------------------------
+numComments=3

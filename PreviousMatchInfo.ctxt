@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=PreviousMatchInfo
+comment0.text=\n\ Objetos\ desta\ classe\ representam\ as\ informacoes\ sobre\ um\ match\ catalogado\n\ previamente.\ \n\ \n\ @version\ 1.0\n\ @since\ 2.0\ 5\ de\ janeiro\ de\ 2024\n\ @author\ Pedro\ Reis\n
+comment1.params=pathname\ isSameContent
+comment1.target=PreviousMatchInfo(Pathname,\ boolean)
+comment1.text=\n\ Construtor.\n\ \n\ @param\ pathname\ O\ pathname\ do\ arq.\ que\ deu\ match.\n\ \n\ @param\ isSameContent\ Se\ ambos\ tinham\ o\ mesmo\ conteudo.\n
+comment2.params=
+comment2.target=Pathname\ getPathname()
+comment2.text=\n\ Retorna\ o\ path\ absoluto\ do\ arquivo\ que\ deu\ este\ match.\n\ \n\ @return\ o\ path\ absoluto\ do\ arquivo\ que\ deu\ este\ match.\n
+comment3.params=
+comment3.target=boolean\ isSameContent()
+comment3.text=\n\ Retorna\ se\ os\ dois\ arquivos\ tem\ o\ mesmo\ conteudo.\n\ \n\ @return\ Se\ os\ dois\ arquivos\ tem\ o\ mesmo\ conteudo.\n
+numComments=4

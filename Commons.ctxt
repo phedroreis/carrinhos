@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=Commons
+comment0.text=\n\ Classe\ para\ metodos\ estaticos\ que\ podem\ ser\ utilzados\ pelas\ \n\ aplicacoes\ do\ pacote.\n\ \n\ \n\ @author\ Pedro\ Reis\ \n\ @version\ 1.0\n\ @since\ 1.0\ -\ 21\ \ de\ janeiro\ de\ 2024\n
+comment1.params=args
+comment1.target=java.lang.String\ parseCharset(java.lang.String[])
+comment1.text=-------------------------------------------------------------------------\n\ \ \ \ \ \ \ \ \ \ \ \n--------------------------------------------------------------------------
+comment2.params=searchRoot\ searchSubdirs
+comment2.target=java.lang.String[]\ searchForHtmlFiles(java.lang.String,\ boolean)
+comment2.text=-------------------------------------------------------------------------\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \n--------------------------------------------------------------------------
+numComments=3
