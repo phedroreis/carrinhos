@@ -26,6 +26,11 @@ public class Remove{
     
     private static String htmlCharset;
     
+    private static final String[] DIV_PATTERN = {
+        "<div aria-label=\"Lista de conversas[\\s\\S]*?>",
+        "<div class=\"(_3HZor _3kF8H|_1-iDe _1xXdX|i5ly3 _2NwAr|_1Flk2 _2DPZK|ldL67 _2i3T7|_3Bc7H _20c87|_2Ts6i _3RGKj)[\\s\\S]*?>"        
+    };
+    
     /*-------------------------------------------------------------------------
                              Le as entradas de usuario                          
     --------------------------------------------------------------------------*/ 
@@ -82,7 +87,7 @@ public class Remove{
           
         String[] filenames = Commons.searchForHtmlFiles(searchDir, searchSubdirs);
         
-        Pattern divPattern = Pattern.compile("</?div[\\s\\S]*?>");
+        Pattern divTagPattern = Pattern.compile("</?div[\\s\\S]*?>");
         
         List<int[]> listOfIndexes;
         
@@ -100,61 +105,69 @@ public class Remove{
             
             StringBuilder sb = new StringBuilder(content);
             
-            Matcher divMatcher = divPattern.matcher(sb);
+            boolean modified = false;
             
-            int divLevel = 0;
-            
-            int divStart = -1;
-             
-            listOfIndexes = new LinkedList<>();
-            
-            while (divMatcher.find()) {
+            for (int i = 0; i < 2; i++) {
                 
-                String divTag = divMatcher.group();
-               
-                if (divLevel == 0) {
+                Matcher divTagMatcher = divTagPattern.matcher(sb);
+                
+                int divLevel = 0;
+            
+                int divTagStart = -1;
+                
+                int occurrences = 0;
+
+                while (divTagMatcher.find()) {
                     
-                    if (divTag.contains("aria-label=\"Lista de conversas\"")) {
+                    String divTag = divTagMatcher.group();
+                   
+                    if (divLevel == 0) {
                         
-                        divLevel++;
-                        divStart = divMatcher.start();
-                           
-                    }
-                    
-                }
-                else {
-                    
-                    if (divTag.charAt(1) == '/') {
-                        
-                        divLevel--;
-                        
-                        if (divLevel == 0) {
- 
-                            int[] divBoundary = new int[2];
-                            divBoundary[0] = divStart;
-                            divBoundary[1] = divMatcher.start() + divTag.length();
-                            listOfIndexes.add(divBoundary);
-                           
+                        if (divTag.matches(DIV_PATTERN[i])) {
+                            
+                            occurrences++;
+
+                            if (occurrences > i) {
+                                divLevel++;
+                                divTagStart = divTagMatcher.start();    
+                            }
+                               
                         }
+                        
                     }
-                    else divLevel++;
+                    else {
+                        
+                        if (divTag.charAt(1) == '/') {
+                            
+                            divLevel--;
+                            
+                            if (divLevel == 0 && occurrences > i) {
+
+                                sb.delete(divTagStart, divTagMatcher.start() + divTag.length());
+                                divTagMatcher = divTagPattern.matcher(sb);
+                                divTagMatcher.region(divTagStart, sb.length());
+                                modified = true;
+                               
+                            }
+                        }
+                        else divLevel++;
+                        
+                    }//if-else
                     
-                }//if-else
-                
-            }//while
+                }//while
             
-            if (listOfIndexes.size() > 0) {
-                
-                for (int[] i : listOfIndexes) sb.delete(i[0], i[1]);
+            }//for step
+            
+            if (modified) {
                 
                 textFileHandler.setContent(sb.toString());
-                
-                textFileHandler.writeWithExtPrefix("rem");
+                    
+                textFileHandler.writeWithExtPrefix("ripped");
             }
             
             progressBar.increment();
             
-        }//for
+        }//for filename
         
     }//main
     
