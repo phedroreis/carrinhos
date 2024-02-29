@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=ParseCharset
+comment0.text=\n\ Classe\ para\ a\ validacao\ de\ entrada\ de\ charset.\n\ \n\ @author\ Pedro\ Reis\n\ @version\ 1.0\ 29\ de\ fevereiro\ de\ 2024\n
+comment1.params=input
+comment1.target=java.lang.String\ parse(java.lang.String)
+numComments=2

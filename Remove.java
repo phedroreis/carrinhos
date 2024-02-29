@@ -1,7 +1,5 @@
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
-import java.nio.charset.IllegalCharsetNameException;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.LinkedList;
@@ -26,10 +24,8 @@ public class Remove{
     
     private static String htmlCharset;
     
-    private static final String[] DIV_PATTERN = {
-        "<div aria-label=\"Lista de conversas[\\s\\S]*?>",
-        "<div class=\"(_3HZor _3kF8H|_1-iDe _1xXdX|i5ly3 _2NwAr|_1Flk2 _2DPZK|ldL67 _2i3T7|_3Bc7H _20c87|_2Ts6i _3RGKj)[\\s\\S]*?>"        
-    };
+    private static final String DIV_PATTERN = 
+        "<div class=\"(_3HZor _3kF8H|_1-iDe _1xXdX|i5ly3 _2NwAr|_1Flk2 _2DPZK|ldL67 _2i3T7|_3Bc7H _20c87|_2Ts6i _3RGKj)\"[\\s\\S]*?>";
     
     /*-------------------------------------------------------------------------
                              Le as entradas de usuario                          
@@ -96,6 +92,10 @@ public class Remove{
         progressBar.showBar();         
         
         for (String filename: filenames) {
+            
+            progressBar.increment();
+            
+            if (filename.endsWith("ripped.html")) continue;
            
             TextFileHandler textFileHandler = new TextFileHandler(filename, htmlCharset);
             
@@ -105,95 +105,58 @@ public class Remove{
             
             StringBuilder sb = new StringBuilder(content);
             
-            boolean modified = false;
+            boolean modified = false; 
+                
+            Matcher divTagMatcher = divTagPattern.matcher(sb);
             
-            for (int i = 0; i < 2; i++) {
-                
-                Matcher divTagMatcher = divTagPattern.matcher(sb);
-                
-                int divLevel = 0;
+            int divLevel = 0;
+        
+            int divTagStart = -1;
             
-                int divTagStart = -1;
+            while (divTagMatcher.find()) {
                 
-                int occurrences = 0;
-
-                while (divTagMatcher.find()) {
+                String divTag = divTagMatcher.group();
+               
+                if (divLevel == 0) {
                     
-                    String divTag = divTagMatcher.group();
-                   
-                    if (divLevel == 0) {
-                        
-                        if (divTag.matches(DIV_PATTERN[i])) {
-                            
-                            occurrences++;
-
-                            if (occurrences > i) {
-                                divLevel++;
-                                divTagStart = divTagMatcher.start();    
-                            }
-                               
-                        }
-                        
+                    if (divTag.matches(DIV_PATTERN)) {
+  
+                            divLevel++;
+                            divTagStart = divTagMatcher.start();             
+                           
                     }
-                    else {
-                        
-                        if (divTag.charAt(1) == '/') {
-                            
-                            divLevel--;
-                            
-                            if (divLevel == 0 && occurrences > i) {
-
-                                sb.delete(divTagStart, divTagMatcher.start() + divTag.length());
-                                divTagMatcher = divTagPattern.matcher(sb);
-                                divTagMatcher.region(divTagStart, sb.length());
-                                modified = true;
-                               
-                            }
-                        }
-                        else divLevel++;
-                        
-                    }//if-else
                     
-                }//while
-            
-            }//for step
-            
+                }
+                else {
+                    
+                    if (divTag.charAt(1) == '/') {
+                        
+                        divLevel--;
+                        
+                        if (divLevel == 0) {
+
+                            sb.delete(divTagStart, divTagMatcher.start() + divTag.length());
+                            divTagMatcher = divTagPattern.matcher(sb);
+                            divTagMatcher.region(divTagStart, sb.length());
+                            modified = true;
+                           
+                        }
+                    }
+                    else divLevel++;
+                    
+                }//if-else
+                
+            }//while
+                 
             if (modified) {
                 
                 textFileHandler.setContent(sb.toString());
                     
                 textFileHandler.writeWithExtPrefix("ripped");
             }
-            
-            progressBar.increment();
-            
+             
         }//for filename
         
     }//main
-    
-    /*=======================================================
-     *                  Classe privada
-     ======================================================*/
-    private static class ParseCharset extends InputParser {
-        
-        @Override
-        public String parse(final String input) 
-            throws IllegalArgumentException {
-
-            try {
-                
-                if (Charset.isSupported(input)) 
-                    return input; 
-                else 
-                    throw new IllegalArgumentException("Charset inexistente!");
-            }
-            catch (IllegalCharsetNameException e) {
-                
-                throw new IllegalArgumentException("Charset ilegal!");
-            }
-            
-        }//parse
-        
-    }//classe privada ParseCharset
-  
+   
 }//classe Remove
