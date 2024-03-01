@@ -17,12 +17,12 @@ import javax.swing.JProgressBar;
  * @since 1.0
  ******************************************************************************/
 public final class Remove extends JFrame {
-    
+  
     //Barra de progresso ocupa toda a janela
     private final JProgressBar jpb;
     
     //Exlcui divs e seus escopos localizadas pela regexp
-    private static final String DIV_PATTERN = 
+    private static final String OPENDIV_EXCLUDE_PATTERN = 
         "<div class=\"(_3HZor _3kF8H|_1-iDe _1xXdX|i5ly3 _2NwAr|_1Flk2 _2DPZK|ldL67 _2i3T7|_3Bc7H _20c87|_2Ts6i _3RGKj)\"[\\s\\S]*?>";  
     
     //Versoes editadas dos arqs. originais serao gravadas com ext. .ripped.html    
@@ -77,6 +77,8 @@ public final class Remove extends JFrame {
             "Erro Fatal!",
             JOptionPane.ERROR_MESSAGE
         );
+        
+        e.printStackTrace();
 
         System.exit(1);//Aborta programa em caso de erro de IO
         
@@ -113,8 +115,6 @@ public final class Remove extends JFrame {
           
         if (selectionOption == 2) System.exit(0);//Usuário abortou execução do programa  
         
-        Remove remove = new Remove();//Cria um objeto da classe principal
-
         //Cria um objeto JFileChooser para selecionar os arquivos de entrada.
         JFileChooser jfc = new JFileChooser("."); 
         
@@ -137,8 +137,6 @@ public final class Remove extends JFrame {
         
         if (jfc.showOpenDialog(null) != JFileChooser.APPROVE_OPTION) System.exit(0);
         
-        remove.setVisible(true);//Exibe a janela principal
-         
         File[] selectedFiles = null;//Array com os arqs. selecionados
         
         if (selectionOption == 0) 
@@ -157,15 +155,19 @@ public final class Remove extends JFrame {
  
         //Mas se o array estiver nulo, aborta o programa
         if (selectedFiles == null) abort(new Exception("Nenhum arquivo selecionado!"));
+        
+        Remove remove = new Remove();//Cria um objeto da classe principal
+        
+        remove.setVisible(true);//Exibe a janela principal
          
         //Valor max. da barra de progresso é o número de arquivos que serão processados
         remove.jpb.setMaximum(selectedFiles.length);
-        
-        int indexFile = 0;//Contador de arquivos processados
-        
-        remove.jpb.setValue(indexFile);//Inicializa barra de progresso em 0%
+       
+        remove.jpb.setValue(0);//Inicializa barra de progresso em 0%
         
         Pattern divTagPattern = Pattern.compile("</?div[\\s\\S]*?>");
+        
+        int indexFile = 0;//Contador de arquivos processados
   
         for (File file : selectedFiles) { //Loop for processa cada aquivo de entrada
 
@@ -189,36 +191,37 @@ public final class Remove extends JFrame {
             
                 int divTagStart = -1;
                 
+                //Localiza cada tag div (abertura ou fechamento) no arquivo fonte
                 while (divTagMatcher.find()) {
                     
-                    String divTag = divTagMatcher.group();
+                    String divTag = divTagMatcher.group();//Tag de abertura ou de fechamento localizada
                    
-                    if (divLevel == 0) {
+                    if (divLevel == 0) {//Eh uma tag localizada fora do escopo de uma div a ser excluida
                         
-                        if (divTag.matches(DIV_PATTERN)) {
+                        if (divTag.matches(OPENDIV_EXCLUDE_PATTERN)) {//Essa tag abre uma div a ser excluida
       
-                                divLevel++;
-                                divTagStart = divTagMatcher.start();             
+                                divLevel++;//Escopo no nivel 1 de aninhamento
+                                divTagStart = divTagMatcher.start();//Marca o inicio da regiao a ser excluida             
                                
                         }
                         
                     }
-                    else {
+                    else {//Tag div localizada no escopo da div que sera excluida
                         
-                        if (divTag.charAt(1) == '/') {
+                        if (divTag.charAt(1) == '/') {//Tag de fechamento
                             
-                            divLevel--;
+                            divLevel--;//Escopo subiu um nivel de aninhamento
                             
-                            if (divLevel == 0) {
+                            if (divLevel == 0) {//Essa tag fecha a div a ser excluida 
     
-                                sb.delete(divTagStart, divTagMatcher.start() + divTag.length());
-                                divTagMatcher = divTagPattern.matcher(sb);
-                                divTagMatcher.region(divTagStart, sb.length());
-                                modified = true;
+                                sb.delete(divTagStart, divTagMatcher.start() + divTag.length());//Exclui DIV
+                                divTagMatcher = divTagPattern.matcher(sb);//Reseta objeto Matcher
+                                divTagMatcher.region(divTagStart, sb.length());//Busca por tags continua a partir do ponto de exclusao
+                                modified = true;//O conteudo do arquivo fonte foi modificado e sera gravado no arquivo destino
                                
                             }
                         }
-                        else divLevel++;
+                        else divLevel++;//Tag de abertura -> Escopo desceu um nivel de aninhamento                       
                         
                     }//if-else
                     
@@ -242,11 +245,11 @@ public final class Remove extends JFrame {
        
         }//Fim do loop for (Todos os arqs. de entrada foram editados)
         
-        remove.jpb.setString("Feito!");//Mensagem final na barra de progresso 
+        remove.jpb.setString("Feito!");//Mensagem final na barra de progresso       
         
     }//main()
- 
-/*===========================================================================
+    
+ /*===========================================================================
  *                          Classe privada
  ===========================================================================*/ 
 private static class ZapFileFilter extends FileFilter {
