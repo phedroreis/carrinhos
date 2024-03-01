@@ -1,10 +1,18 @@
 #BlueJ class context
 comment0.target=Remove
-comment0.text=\n\ Uma\ aplica\u00E7ao\ para\ remover\ tags\ divs\ (e\ seus\ escopos)\ que\ contenham\ o\n\ atributo\ aria-label\="Lista\ de\ conversas".\n\ \n\ @author\ Pedro\ Reis\n\ @version\ 1.0\ 25\ de\ fevereiro\ de\ 2024\n
-comment1.params=charset
-comment1.target=void\ readInputs(java.lang.String)
-comment1.text=-------------------------------------------------------------------------\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Le\ as\ entradas\ de\ usuario\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \n--------------------------------------------------------------------------
-comment2.params=args
-comment2.target=void\ main(java.lang.String[])
-comment2.text=\n\ Metodo\ principal.\n\ \n\ @param\ args\ O\ charset\ a\ ser\ usado\ para\ ler\ e\ escrever\ no\ \n\ terminal\ pode\ ser\ passado\ ao\ programa\ pela\ linha\ de\ comando.\ Se\ nenhum\ \n\ parametro\ for\ passado\ sera\ assumido\ que\ o\ charset\ do\ terminal\ e\ o\ mesmo\n\ do\ sistema.\n\ \n\ @throws\ IOException\ Em\ caso\ de\ erro\ de\ IO.\n
-numComments=3
+comment0.text=\n\ Aplicacao\ para\ excluir\ DIVs\ e\ seus\ escopos.\n\ \n\ @author\ "Pedro\ Reis"\n\ @version\ 2.0\ (29\ de\ fevereiro\ de\ 2024)\n\ @since\ 1.0\n
+comment1.params=
+comment1.target=Remove()
+comment1.text=[00]----------------------------------------------------------------------\n\ \ \ \ \n--------------------------------------------------------------------------
+comment2.params=filename
+comment2.target=boolean\ fileFilter(java.lang.String)
+comment2.text=[01]----------------------------------------------------------------------\n\ \ \ \ \n--------------------------------------------------------------------------
+comment3.params=e
+comment3.target=void\ abort(java.lang.Exception)
+comment3.text=[02]----------------------------------------------------------------------\n\ \ \ \ \n--------------------------------------------------------------------------
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+comment4.text=\n\ Programa\ principal.\n\ \n\ <p>O\ m\u00E9todo\ exibe,\ inicialmente,\ uma\ janela\ para\ o\ usu\u00E1rio\ escolher\ se\n\ quer\ serlecionar\ uma\ pasta\ onde\ estar\u00E3o\ os\ arquivos\ a\ serem\ editados,\n\ ou\ se\ prefere\ selecionar\ individualmente\ estes\ arquivos.</p>\n\ \n\ <p>Na\ sequ\u00EAncia\ abre\ uma\ interface\ para\ que\ a\ pasta\ ou\ os\ arquivos\ sejam\n\ escolhidos</p>\n\ \n\ @param\ args\ Args\ de\ linha\ de\ comando\ nao\ sao\ utilizados\ nesta\ aplicacao.\n
+comment5.params=dir\ filename
+comment5.target=boolean\ accept(java.io.File,\ java.lang.String)
+numComments=6

@@ -27,23 +27,12 @@ utf_16le
 utf8
 """;
 
-    /**
-     * Define o charset do programa com o qual serao lidas entradas
-     * do terminal e com o qual serao codificadas as saidas para o terminal.
-     * 
-     * <p>Se nao for especificado nenhum charset pela linha de comando sera
-     * utilizado o charset default do sistema.</p>
-     * 
-     * @param args O array com os parametros digitados na linha de comando.
-     * 
-     * @return O charset selecionado.
-     */
     /*-------------------------------------------------------------------------
            
     --------------------------------------------------------------------------*/   
-    static String parseCharset(final String[] args) {
+    static String parseCharset(final String[] args, final String defaultCharset) {
         
-        String charset = Charset.defaultCharset().toString();
+        String charset = defaultCharset;
         
         if (args.length > 0) {
             
@@ -63,6 +52,26 @@ utf8
         return charset;
         
     }//parseCharset
+    
+     /**
+     * Define o charset do programa com o qual serao lidas entradas
+     * do terminal e com o qual serao codificadas as saidas para o terminal.
+     * 
+     * <p>Se nao for especificado nenhum charset pela linha de comando sera
+     * utilizado o charset default do sistema.</p>
+     * 
+     * @param args O array com os parametros digitados na linha de comando.
+     * 
+     * @return O charset selecionado.
+     */   
+    /*-------------------------------------------------------------------------
+           
+    --------------------------------------------------------------------------*/   
+    static String parseCharset(final String[] args) {
+        
+        return parseCharset(args, Charset.defaultCharset().toString());
+        
+    }//parseCharset    
     
     /**
      * Retorna uma lista com todos os arquivos HTML encontrados do diretorio de pesquisa. 
