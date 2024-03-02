@@ -94,7 +94,7 @@ public final class Remove extends JFrame {
      * <p>Na sequência abre uma interface para que a pasta ou os arquivos sejam
      * escolhidos</p>
      * 
-     * @param args Args de linha de comando nao sao utilizados nesta aplicacao.
+     * @param args Pode ser passado o charset dos arquivos. Nenhum parametro : charset utf8.
      */
     public static void main(String[] args) {
         
@@ -113,7 +113,7 @@ public final class Remove extends JFrame {
             null, selectionsOptions, selectionsOptions[0]
         );
           
-        if (selectionOption == 2) System.exit(0);//Usuário abortou execução do programa  
+        if (selectionOption == 2) System.exit(0);//Usuário cancelou execução do programa  
         
         //Cria um objeto JFileChooser para selecionar os arquivos de entrada.
         JFileChooser jfc = new JFileChooser("."); 
