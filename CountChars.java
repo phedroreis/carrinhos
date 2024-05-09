@@ -9,6 +9,7 @@ import toolbox.terminal.InputReader;
 import toolbox.terminal.InputParser;
 import toolbox.terminal.ProgressBar;
 import toolbox.textfile.TextFileHandler;
+import java.util.Locale;
 
 
 /**
@@ -17,7 +18,12 @@ import toolbox.textfile.TextFileHandler;
  * @version 1.0
  * @author Pedro Reis
  */
-public final class CountChars { 
+public final class CountChars {
+    
+    static {
+        
+        toolbox.locale.Localization.setLocale(new Locale("pt", "BR")); 
+    }
          
     private static boolean sortedByLength;
     

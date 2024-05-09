@@ -8,6 +8,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
+import java.util.Locale;
 
 /******************************************************************************
  * Aplicacao para excluir DIVs e seus escopos.
@@ -17,6 +18,11 @@ import javax.swing.JProgressBar;
  * @since 1.0
  ******************************************************************************/
 public final class Remove extends JFrame {
+    
+    static {
+        
+        toolbox.locale.Localization.setLocale(new Locale("pt", "BR")); 
+    }    
   
     //Barra de progresso ocupa toda a janela
     private final JProgressBar jpb;
@@ -189,7 +195,7 @@ public final class Remove extends JFrame {
                 
                 int divLevel = 0;
             
-                int divTagStart = -1;
+                int excludeFrom = -1;
                 
                 //Localiza cada tag div (abertura ou fechamento) no arquivo fonte
                 while (divTagMatcher.find()) {
@@ -199,10 +205,10 @@ public final class Remove extends JFrame {
                     if (divLevel == 0) {//Eh uma tag localizada fora do escopo de uma div a ser excluida
                         
                         if (divTag.matches(OPENDIV_EXCLUDE_PATTERN)) {//Essa tag abre uma div a ser excluida
-      
-                                divLevel++;//Escopo no nivel 1 de aninhamento
-                                divTagStart = divTagMatcher.start();//Marca o inicio da regiao a ser excluida             
-                               
+  
+                            divLevel++;//Escopo no nivel 1 de aninhamento
+                            excludeFrom = divTagMatcher.start();//Marca o inicio da regiao a ser excluida             
+                           
                         }
                         
                     }
@@ -214,9 +220,9 @@ public final class Remove extends JFrame {
                             
                             if (divLevel == 0) {//Essa tag fecha a div a ser excluida 
     
-                                sb.delete(divTagStart, divTagMatcher.start() + divTag.length());//Exclui DIV
+                                sb.delete(excludeFrom, divTagMatcher.start() + divTag.length());//Exclui DIV
                                 divTagMatcher = divTagPattern.matcher(sb);//Reseta objeto Matcher
-                                divTagMatcher.region(divTagStart, sb.length());//Busca por tags continua a partir do ponto de exclusao
+                                divTagMatcher.region(excludeFrom, sb.length());//Busca por tags continua a partir do ponto de exclusao
                                 modified = true;//O conteudo do arquivo fonte foi modificado e sera gravado no arquivo destino
                                
                             }

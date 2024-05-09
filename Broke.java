@@ -11,6 +11,7 @@ import toolbox.terminal.InputParser;
 import toolbox.textfile.TextFileHandler;
 import toolbox.regex.Regex;
 import toolbox.file.SearchFolder;
+import java.util.Locale;
 
 /**
  * O objetivo desta aplicação é tentar quebrar as linhas de um arquivo HTML que
@@ -27,6 +28,11 @@ import toolbox.file.SearchFolder;
  * @author Pedro Reis
  */
 public final class Broke {
+    
+    static {
+        
+        toolbox.locale.Localization.setLocale(new Locale("pt", "BR")); 
+    }
     
     //O tam. max. desejavel para linhas do arquivo
     private static int maxLength;

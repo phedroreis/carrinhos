@@ -3,9 +3,14 @@ import toolbox.terminal.ProgressBar;
 import toolbox.textfile.TextFileHandler;
 import toolbox.textfile.TextFileEditor;
 import toolbox.file.SearchFolder;
+import java.util.Locale;
 
 public class ChangeCharset {
     
+    static {
+        
+        toolbox.locale.Localization.setLocale(new Locale("pt", "BR")); 
+    }   
     private static final String ROOT_FOLDER = ".";
     
     private static final String HTML_REGEX = ".+?\\.(HTML?|html?)$";

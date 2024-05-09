@@ -1,0 +1,26 @@
+#BlueJ class context
+comment0.target=RemoveX
+comment0.text=\n\ Aplicacao\ para\ excluir\ um\ tipo\ selecionado\ de\ tag\ e\ seu\ escopo\ em\ arquivos\n\ HTML.\n\ \n\ @author\ "Pedro\ Reis"\n\ @version\ 1.0\ (7\ de\ maio\ de\ 2024)\n\ @since\ 1.0\n
+comment1.params=
+comment1.target=RemoveX()
+comment1.text=-------------------------------------------------------------------------\n\ \ \ \ \n--------------------------------------------------------------------------
+comment2.params=filename
+comment2.target=boolean\ fileFilter(java.lang.String)
+comment2.text=-------------------------------------------------------------------------\n\ \ \ \ \n--------------------------------------------------------------------------
+comment3.params=e\ filename
+comment3.target=void\ parseError(javax.management.modelmbean.XMLParseException,\ java.lang.String)
+comment3.text=-------------------------------------------------------------------------\n\ \ \ \ \n--------------------------------------------------------------------------
+comment4.params=e
+comment4.target=void\ abort(java.lang.Exception)
+comment4.text=-------------------------------------------------------------------------\n\ \ \ \ \n--------------------------------------------------------------------------
+comment5.params=
+comment5.target=void\ remove()
+comment5.text=-------------------------------------------------------------------------\n\ \ \ \ \n--------------------------------------------------------------------------
+comment6.params=dir\ filename
+comment6.target=boolean\ accept(java.io.File,\ java.lang.String)
+comment7.params=args
+comment7.target=void\ selectFolder(java.lang.String[])
+comment8.params=args
+comment8.target=void\ main(java.lang.String[])
+comment8.text=\n\ Programa\ principal.\n\ \n\ <p>O\ m\u00E9todo\ exibe,\ inicialmente,\ uma\ janela\ para\ o\ usu\u00E1rio\ escolher\ se\n\ quer\ serlecionar\ uma\ pasta\ onde\ estar\u00E3o\ os\ arquivos\ a\ serem\ editados,\n\ ou\ se\ prefere\ selecionar\ individualmente\ estes\ arquivos.</p>\n\ \n\ <p>Na\ sequ\u00EAncia\ abre\ uma\ interface\ para\ que\ a\ pasta\ ou\ os\ arquivos\ sejam\n\ escolhidos</p>\n\ \n\ @param\ args\ Pode\ ser\ passado\ o\ charset\ dos\ arquivos.\ Nenhum\ parametro\ \:\ charset\ utf8.\n
+numComments=9

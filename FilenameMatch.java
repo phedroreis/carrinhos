@@ -19,6 +19,7 @@ import java.util.TreeSet;
 import java.util.regex.PatternSyntaxException;
 import toolbox.terminal.InputReader;
 import toolbox.terminal.InputParser;
+import java.util.Locale;
 
 /*******************************************************************************
  * Uma aplicacao que encontra e lista nomes de arquivos com substrings 
@@ -29,6 +30,11 @@ import toolbox.terminal.InputParser;
  * @author Pedro Reis
  ******************************************************************************/
 public final class  FilenameMatch {
+    
+    static {
+        
+        toolbox.locale.Localization.setLocale(new Locale("pt", "BR")); 
+    }
     
     /*
     Essa estrutura de dados irah armazenar em uma lista todos os pathnames dos 
@@ -287,7 +293,7 @@ public final class  FilenameMatch {
             false
         );
         
-        checkSha = inputReader.readInput().equals("s");        
+        checkSha = inputReader.readInput().equals("s"); 
         
     }//readInputs 
     
@@ -644,7 +650,7 @@ public final class  FilenameMatch {
                     Metodo que inicia a execucao do programa       
     --------------------------------------------------------------------------*/
     public static void main(String[] args) {
-        
+             
        PrintStream systemOut = System.out;   
        
        try {
