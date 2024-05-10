@@ -1,4 +1,3 @@
-import toolbox.textfile.TextFileHandler;
 import javax.swing.filechooser.FileFilter;
 import javax.management.modelmbean.XMLParseException;
 import java.io.*;
@@ -84,7 +83,7 @@ public final class RemoveX extends JFrame {
         //Cria filtro pra aceitar apenas selecao de certos tipos de arquivos
         jFileChooser.setAcceptAllFileFilterUsed(false);
         jFileChooser.setApproveButtonText("Processar");
-        jFileChooser.addChoosableFileFilter(new ZapFileFilter()); 
+        jFileChooser.addChoosableFileFilter(new HtmlFileFilter()); 
         
         centerPanel.add(jFileChooser);
       
@@ -177,7 +176,7 @@ public final class RemoveX extends JFrame {
             );//Selecionar pasta
  
         //Mas se o array estiver nulo, aborta o programa
-        if (selectedFiles == null) abort(new Exception("Nenhum arquivo selecionado!"));
+        if (selectedFiles == null) abort(new Exception("Nenhum arquivo HTML no diret\u00f3rio selecionado!"));
         
         JFrame jFrame = new JFrame("Processando arquivos...");
         
@@ -208,7 +207,7 @@ public final class RemoveX extends JFrame {
             
             try {
                 
-                TextFileHandler textFileHandler = new TextFileHandler(file.getAbsolutePath(), htmlCharset);
+                toolbox.textfile.TextFileHandler textFileHandler = new toolbox.textfile.TextFileHandler(file.getAbsolutePath(), htmlCharset);
                 
                 textFileHandler.read();
                 
@@ -285,7 +284,7 @@ public final class RemoveX extends JFrame {
  /*===========================================================================
  *                          Classes privadas
  ===========================================================================*/ 
-private class ZapFileFilter extends FileFilter {
+private class HtmlFileFilter extends FileFilter {
     
     @Override
     public boolean accept(File file){
@@ -326,7 +325,7 @@ private class Parser extends toolbox.xml.TagParser {
         
         int[] deletionIndex = new int[2];
         
-        deletionIndex[0] = t.getOpenTagIndex();
+        deletionIndex[0] = t.getStartBlockIndex();
         deletionIndex[1] = t.getEndBlockIndex();  
         
         listOfDeletionIndexes.push(deletionIndex);
