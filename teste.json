@@ -1,0 +1,104 @@
+{
+  "media": {
+    "@ref": "1.mkv",
+    "track": [
+      {
+        "@type": "General",
+        "UniqueID": "73960893498783722120101237781326667219",
+        "VideoCount": "1",
+        "AudioCount": "1",
+        "MenuCount": "1",
+        "FileExtension": "mkv",
+        "Format": "Matroska",
+        "Format_Version": "4",
+        "FileSize": "4274061",
+        "Duration": "60.026",
+        "OverallBitRate": "569628",
+        "FrameRate": "30.000",
+        "FrameCount": "1799",
+        "IsStreamable": "Yes",
+        "File_Created_Date": "UTC 2024-06-02 13:26:21.960",
+        "File_Created_Date_Local": "2024-06-02 10:26:21.960",
+        "File_Modified_Date": "UTC 2024-06-02 13:26:47.437",
+        "File_Modified_Date_Local": "2024-06-02 10:26:47.437",
+        "Encoded_Application": "Lavf59.17.101",
+        "Encoded_Library": "Lavf59.17.101",
+        "extra": {
+          "ErrorDetectionType": "Per level 1"
+        }
+      },
+      {
+        "@type": "Video",
+        "StreamOrder": "0",
+        "ID": "1",
+        "UniqueID": "7656890465731389134",
+        "Format": "HEVC",
+        "Format_Profile": "Main",
+        "Format_Level": "2.1",
+        "Format_Tier": "Main",
+        "CodecID": "V_MPEGH/ISO/HEVC",
+        "Duration": "59.966000000",
+        "Width": "360",
+        "Height": "640",
+        "Sampled_Width": "360",
+        "Sampled_Height": "640",
+        "PixelAspectRatio": "1.000",
+        "DisplayAspectRatio": "0.563",
+        "FrameRate_Mode": "CFR",
+        "FrameRate": "30.000",
+        "FrameCount": "1799",
+        "ColorSpace": "YUV",
+        "ChromaSubsampling": "4:2:0",
+        "ChromaSubsampling_Position": "Type 0",
+        "BitDepth": "8",
+        "Delay": "0.060",
+        "Encoded_Library": "x265 - 3.5+21-3898a4996:[Windows][GCC 11.2.0][64 bit] 8bit+10bit+12bit",
+        "Encoded_Library_Name": "x265",
+        "Encoded_Library_Version": "3.5+21-3898a4996:[Windows][GCC 11.2.0][64 bit] 8bit+10bit+12bit",
+        "Encoded_Library_Settings": "cpuid=1111039 / frame-threads=3 / numa-pools=8 / wpp / no-pmode / no-pme / no-psnr / no-ssim / log-level=2 / input-csp=1 / input-res=360x640 / interlace=0 / total-frames=0 / level-idc=0 / high-tier=1 / uhd-bd=0 / ref=3 / no-allow-non-conformance / no-repeat-headers / annexb / no-aud / no-eob / no-eos / no-hrd / info / hash=0 / no-temporal-layers / open-gop / min-keyint=25 / keyint=250 / gop-lookahead=0 / bframes=4 / b-adapt=2 / b-pyramid / bframe-bias=0 / rc-lookahead=20 / lookahead-slices=0 / scenecut=40 / no-hist-scenecut / radl=0 / no-splice / no-intra-refresh / ctu=64 / min-cu-size=8 / no-rect / no-amp / max-tu-size=32 / tu-inter-depth=1 / tu-intra-depth=1 / limit-tu=0 / rdoq-level=0 / dynamic-rd=0.00 / no-ssim-rd / signhide / no-tskip / nr-intra=0 / nr-inter=0 / no-constrained-intra / strong-intra-smoothing / max-merge=3 / limit-refs=1 / no-limit-modes / me=1 / subme=2 / merange=57 / temporal-mvp / no-frame-dup / no-hme / weightp / no-weightb / no-analyze-src-pics / deblock=0:0 / sao / no-sao-non-deblock / rd=3 / selective-sao=4 / early-skip / rskip / no-fast-intra / no-tskip-fast / no-cu-lossless / b-intra / no-splitrd-skip / rdpenalty=0 / psy-rd=2.00 / psy-rdoq=0.00 / no-rd-refine / no-lossless / cbqpoffs=0 / crqpoffs=0 / rc=crf / crf=28.0 / qcomp=0.60 / qpstep=4 / stats-write=0 / stats-read=0 / ipratio=1.40 / pbratio=1.30 / aq-mode=2 / aq-strength=1.00 / cutree / zone-count=0 / no-strict-cbr / qg-size=32 / no-rc-grain / qpmax=69 / qpmin=0 / no-const-vbv / sar=0 / overscan=0 / videoformat=5 / range=0 / colorprim=1 / transfer=1 / colormatrix=1 / chromaloc=1 / chromaloc-top=0 / chromaloc-bottom=0 / display-window=0 / cll=0,0 / min-luma=0 / max-luma=255 / log2-max-poc-lsb=8 / vui-timing-info / vui-hrd-info / slices=1 / no-opt-qp-pps / no-opt-ref-list-length-pps / no-multi-pass-opt-rps / scenecut-bias=0.05 / hist-threshold=0.03 / no-opt-cu-delta-qp / no-aq-motion / no-hdr10 / no-hdr10-opt / no-dhdr10-opt / no-idr-recovery-sei / analysis-reuse-level=0 / analysis-save-reuse-level=0 / analysis-load-reuse-level=0 / scale-factor=0 / refine-intra=0 / refine-inter=0 / refine-mv=1 / refine-ctu-distortion=0 / no-limit-sao / ctu-info=0 / no-lowpass-dct / refine-analysis-type=0 / copy-pic=1 / max-ausize-factor=1.0 / no-dynamic-refine / no-single-sei / no-hevc-aq / no-svt / no-field / qp-adaptation-range=1.00 / scenecut-aware-qp=0conformance-window-offsets / right=0 / bottom=0 / decoder-max-rate=0 / no-vbv-live-multi-pass",
+        "Default": "Yes",
+        "Forced": "No",
+        "colour_range": "Limited",
+        "colour_description_present": "Yes",
+        "colour_primaries": "BT.709",
+        "transfer_characteristics": "BT.709",
+        "matrix_coefficients": "BT.709",
+        "extra": {
+          "VENDOR_ID": "[0][0][0][0]"
+        }
+      },
+      {
+        "@type": "Audio",
+        "StreamOrder": "1",
+        "ID": "2",
+        "UniqueID": "10978938049059137471",
+        "Format": "AAC",
+        "Format_Profile": "LC",
+        "Format_Settings_SBR": "No (Explicit)",
+        "CodecID": "A_AAC-2",
+        "Duration": "60.024000000",
+        "Channels": "2",
+        "ChannelPositions": "Front: L R",
+        "ChannelLayout": "L R",
+        "SamplesPerFrame": "1024",
+        "SamplingRate": "44100",
+        "SamplingCount": "2647059",
+        "FrameRate": "43.066",
+        "Compression_Mode": "Lossy",
+        "Delay": "0.000",
+        "Delay_Source": "Container",
+        "Default": "Yes",
+        "Forced": "No",
+        "extra": {
+          "VENDOR_ID": "[0][0][0][0]"
+        }
+      },
+      {
+        "@type": "Menu",
+        "extra": {
+          "_00_00_00_000": ":"
+        }
+      }
+    ]
+  }
+}
