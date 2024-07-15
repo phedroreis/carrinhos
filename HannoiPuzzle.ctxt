@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=HannoiPuzzle
+comment1.params=discs
+comment1.target=HannoiPuzzle(int)
+comment1.text=----------------------------------------------------------\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Construtor\ da\ classe\n---------------------------------------------------------
+comment2.params=
+comment2.target=void\ solve()
+comment2.text=-------------------------------------------------------\n\ \ \ Inicia\ o\ metodo\ recursivo\ para\ solucionar\ o\ puzzle.\n------------------------------------------------------
+comment3.params=discs\ source\ target
+comment3.target=void\ solveInstance(int,\ int,\ int)
+comment3.text=----------------------------------------------------------\n\ \ \ \ \ \ \ \ \ \ \ \ Resolve\ recursivamente\ o\ puzzle\n---------------------------------------------------------
+comment4.params=args
+comment4.target=void\ main(java.lang.String[])
+comment4.text=\n\ O\ programa\ demonstra\ o\ passos\ necessarios\ para\ resolver\ um\ puzzle\ torre\ de\ Hannoi\ de\ n\ discos.\n\ \n\ @param\ args\ Na\ linha\ de\ comando\ pode\ ser\ passado\ o\ num.\ de\ discos\ do\ puzzle.\ Default\ \=\ 5.\n
+numComments=5
